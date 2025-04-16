@@ -21,13 +21,20 @@ jobs:
         environment-file: environment.yml
         auto-activate-base: false
 
-    - name: 🔁 Conda Info
+    - name: 🧪 Test Conda Environment
       run: |
-        conda info
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate vuln-detect-env
         conda list
 
     - name: ✅ Verify FastAPI loads
-      run: python -c "import app"
+      run: |
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate vuln-detect-env
+        python -c "import app"
 
-    - name: ✅ Verify Streamlit UI loads
-      run: python -c "import UI.app"
+    - name: ✅ Verify Streamlit loads
+      run: |
+        source ~/miniconda3/etc/profile.d/conda.sh
+        conda activate vuln-detect-env
+        python -c "import UI.app"
