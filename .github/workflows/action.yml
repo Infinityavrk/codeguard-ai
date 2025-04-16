@@ -9,26 +9,28 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}  # 🔁 This makes sure Conda env gets activated correctly
 
     steps:
-    - name: ⬇️ Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: 🧪 Set up Miniconda
-      uses: conda-incubator/setup-miniconda@v2
-      with:
-        activate-environment: vuln-detect-env
-        environment-file: environment.yml
-        auto-activate-base: false
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          environment-file: environment.yml
+          activate-environment: vuln-detect-env
+          auto-activate-base: false
 
-    - name: 🔁 Conda info
-      shell: bash
-      run: conda info
+      - name: Confirm Conda is working
+        run: |
+          conda info
+          conda list
 
-    - name: ✅ Import FastAPI app
-      shell: bash
-      run: python -c "import app"
+      - name: Import FastAPI app
+        run: python -c "import app"
 
-    - name: ✅ Import Streamlit UI
-      shell: bash
-      run: python -c "import UI.app"
+      - name: Import Streamlit app
+        run: python -c "import UI.app"
