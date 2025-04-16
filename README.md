@@ -97,9 +97,9 @@ This script:
 
 ---
 
-## 📷 Streamlit UI App
+## 🖼️ Application UI
 
-```markdown
+```
 ![App Screenshot](uiapp.png)
 ```
 
@@ -110,12 +110,14 @@ This script:
 ```
 🖊️ Left-hand side: Paste the vulnerable code (Java or C#)
 
-⏎ Press Enter or click Detect
+⏎ Press Enter to submit the code
 
 ➡️ Right-hand side:
   • ✅ Detected vulnerability types
   • 📍 Vulnerable line numbers
   • 🛠️ Suggested code fix
+
+This makes it easy to understand, identify, and resolve vulnerabilities from our source code in real time.
 ```
 
 ---
