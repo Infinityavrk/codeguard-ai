@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: ⬇️ Checkout repo
+    - name: ⬇️ Checkout repository
       uses: actions/checkout@v3
 
     - name: 🧪 Set up Miniconda
@@ -21,20 +21,14 @@ jobs:
         environment-file: environment.yml
         auto-activate-base: false
 
-    - name: 🧪 Test Conda Environment
-      run: |
-        source ~/miniconda3/etc/profile.d/conda.sh
-        conda activate vuln-detect-env
-        conda list
+    - name: 🔁 Conda info
+      shell: bash
+      run: conda info
 
-    - name: ✅ Verify FastAPI loads
-      run: |
-        source ~/miniconda3/etc/profile.d/conda.sh
-        conda activate vuln-detect-env
-        python -c "import app"
+    - name: ✅ Import FastAPI app
+      shell: bash
+      run: python -c "import app"
 
-    - name: ✅ Verify Streamlit loads
-      run: |
-        source ~/miniconda3/etc/profile.d/conda.sh
-        conda activate vuln-detect-env
-        python -c "import UI.app"
+    - name: ✅ Import Streamlit UI
+      shell: bash
+      run: python -c "import UI.app"
