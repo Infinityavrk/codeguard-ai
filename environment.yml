@@ -1,4 +1,4 @@
-name: py310env
+name: vuln-detect-env
 channels:
   - defaults
   - conda-forge
