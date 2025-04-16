@@ -61,8 +61,8 @@ def download_from_drive():
         print("✅ Model folder already exists. Skipping download.")
         return
 
-    # Replace with your actual Google Drive file ID
-    file_id = "10upy5DGWUmjFDwauN_Jf3nRzGU2PDM8R"
+    # Replace with shared Google Drive file ID
+    file_id = "<FILE_ID>"
     zip_path = os.path.join(extract_dir, "vulmodels_bundle.zip")
     os.makedirs(extract_dir, exist_ok=True)
 
