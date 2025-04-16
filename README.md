@@ -99,9 +99,7 @@ This script:
 
 ## 🖼️ Application UI
 
-```
 ![App Screenshot](uiapp.png)
-```
 
 ---
 
