@@ -1,73 +1,131 @@
-# 🔐 Code Vulnerability Detection & Fix (Streamlit App)
+# 🛡️ Code Vulnerability Detection App
 
-This Streamlit-based web application allows you to:
+This application uses FastAPI (backend) and Streamlit (frontend) to detect and fix code vulnerabilities. It supports Java and C# code snippets.
 
-- Detect code vulnerabilities (like SQL Injection, CSRF)
+---
+
+## ✅ Features
+
+- ML-powered multi-label vulnerability detection
+- Paste vulnerable code (Java or C#)
+- Detect vulnerability types (like SQL Injection, CSRF, etc.)
 - Highlight vulnerable lines
-- Get suggested fixes for detected issues
+- Generate suggested code fixes
 
 ---
 
-## 📦 Requirements
+## ✅ Prerequisites
+- Python 3.10 (via Conda)
+- Anaconda or Miniconda installed
+- Git installed
+- codeguard-ai project cloned locally
 
-- Python 3.8+
-- Install dependencies via:
+---
 
-```bash
-pip install -r requirements.txt
+## 📦 Project Structure
+
+```
+codeguard-ai/
+├── app.py                  # FastAPI backend
+├── UI/
+│   └── app.py              # Streamlit frontend
+├── environment.yml         # Conda environment file
+├── scripts/
+│   ├── run.sh              # One-click startup
+│   └── stop.sh             # Script to stop running services
 ```
 
 ---
 
-## 🛠 Installation
+## ⚙️ Setup Instructions (Using Conda)
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/vuln-detect-app.git
-cd vuln-detect-app
-pip install -r requirements.txt
+git clone https://github.com/Infinityavrk/codeguard-ai.git
+cd codeguard-ai
+```
+
+### 2. Create and Activate Environment
+
+```bash
+conda env create -f environment.yml
+conda activate vuln-detect-env
+```
+
+### 3. Start FastAPI Backend
+
+```bash
+uvicorn app:app --reload --port 8000
+```
+
+### 4. Start Streamlit UI
+
+Open a new terminal:
+```bash
+cd UI
+conda activate vuln-detect-env
+streamlit run app.py --server.port 8501
 ```
 
 ---
 
-## 🚀 Running the App
-
-Make sure your **FastAPI backend is running** at `http://127.0.0.1:8000`
-
-Then launch the frontend with:
+## 🚀 (Optional) One-Click Startup: `run.sh`
 
 ```bash
-streamlit run app.py
+chmod +x scripts/run.sh
+./scripts/run.sh
 ```
 
----
-
-## 📌 Features
-
-- 🧠 ML-powered multi-label vulnerability detection
-- ⚠️ Line-level vulnerability highlights
-- 💡 Fix suggestion with one click
+This script:
+- Checks and creates the Conda environment if needed
+- Activates it
+- Launches FastAPI on `localhost:8000`
+- Starts Streamlit on `localhost:8501`
 
 ---
 
-## 📷 Screenshot
+## 🛑 (Optional) Stop Running Services: `stop.sh`
 
-_You can include a screenshot here by adding `screenshot.png` in your repo and using:_
+```bash
+chmod +x scripts/stop.sh
+./scripts/stop.sh
+```
+
+This script:
+- Kills background `uvicorn` (FastAPI) and `streamlit` processes
+
+---
+
+## 📷 Streamlit UI App
 
 ```markdown
-![App Screenshot](screenshot.png)
+![App Screenshot](uiapp.png)
 ```
 
 ---
+
+## 🎯 How to Use the App
+
+```
+🖊️ Left-hand side: Paste the vulnerable code (Java or C#)
+
+⏎ Press Enter or click Detect
+
+➡️ Right-hand side:
+  • ✅ Detected vulnerability types
+  • 📍 Vulnerable line numbers
+  • 🛠️ Suggested code fix
+```
+
+---
+
+## 🧪 Test API
+
+Open your browser:  
+📄 Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)  
+🖥️ Streamlit UI: [http://localhost:8501](http://localhost:8501)
 
 ## 📝 Notes
 
 - Ensure the FastAPI backend is active before submitting code.
-- This version does **not include PDF export** — only HTML rendering and fix suggestion are enabled.
-
----
-
-## 📫 Contact
-
-Maintained by **Asha Vidyadharan**
-
-Feel free to reach out for contributions or suggestions!
