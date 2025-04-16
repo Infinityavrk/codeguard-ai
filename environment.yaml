@@ -1,0 +1,24 @@
+name: py310env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.4
+  - pandas
+  - scikit-learn=1.6.1
+  - pip:
+      - torch==2.6.0
+      - transformers==4.51.1
+      - sentencepiece==0.2.0
+      - fastapi
+      - uvicorn
+      - captum==0.8.0
+      - gdown
+      - regex==2024.11.6
+      - python-multipart
+      - streamlit
+      - requests
+      - matplotlib==3.10.1
+      - seaborn==0.13.2

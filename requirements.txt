@@ -1,0 +1,14 @@
+torch==2.6.0
+transformers==4.51.1
+sentencepiece==0.2.0
+fastapi
+uvicorn
+scikit-learn==1.6.1
+captum==0.8.0
+gdown
+numpy==1.26.4
+pandas
+regex==2024.11.6
+python-multipart
+streamlit
+requests
